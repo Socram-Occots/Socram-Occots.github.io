@@ -1,0 +1,93 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "projection": {
+      "type": "albersUsa"
+    },
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/us-10m.json",
+          "format": {
+            "type": "topojson",
+            "feature": "states"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "lightgray",
+          "stroke": "white"
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_bcubcg_fall2022/main/data/bfro_reports_fall2022.csv"
+        },
+        "transform": [
+          {
+            "filter": "(datum.latitude > 55 && datum.latitude < 80 && datum.longitude > -170 && datum.longitude < -140) || (datum.latitude > 25 && datum.latitude < 50 && datum.longitude > -140)"
+          }
+        ],
+        "encoding": {
+          "longitude": {
+            "field": "longitude",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "latitude",
+            "type": "quantitative"
+          }
+        },
+        "layer": [
+          {
+            "params": [
+              {
+                "name": "paintbrush",
+                "select": {
+                  "type": "point",
+                  "on": "mouseover",
+                  "nearest": "true"
+                }
+              }
+            ],
+            "mark": {
+              "type": "circle",
+              "color": "red",
+              "size": 50
+            }
+            ,
+            "encoding": {
+              "opacity": {
+                "condition": {
+                  "param": "paintbrush",
+                  "value": 1
+                },
+                "value": 0.1
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10
+            },
+            "encoding": {
+              "text": {
+                "field": "county",
+                "type": "nominal"
+              }
+              ,
+              "opacity": {
+                "condition": {
+                  "param": "paintbrush",
+                  "value": 1
+                },
+                "value": 0
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
