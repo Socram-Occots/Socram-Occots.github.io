@@ -34,8 +34,8 @@ This plot's json file was manually made with vega cod and without the use of Alt
 
 
 ## Bigfoot Sightings per State
-<!-- 
-<vegachart schema-url="{{ site.baseurl }}/assets/json/bcubcgHW1Plot2.json" style="width: 100%"></vegachart> -->
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/bcubcgHW1Plot2.json" style="width: 100%"></vegachart>
 
 In this visualization we are showing a bar plot of the number of reported bigfoot sighting per state. On the x-axis we have the states where sightings were reported and on the y-axis we have the number of sightings. I chose a to use a color scale for the bars to add a visual effect the lighter is for lower numbers and darker for higher numbers. I chose the color brown because I associate bigfoot with the color brown because of his theorized brown hairy body. While it is a pretty basic plot it allows for the viewer to quickly identify the differences in sightings based on state. No data transformation was done. The url was used directly within Altair. There are no connections between the work done in homework 9 and this.
 
