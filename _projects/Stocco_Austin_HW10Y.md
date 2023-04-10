@@ -25,15 +25,15 @@ The first plot's interactivity comes from the ability to select certain points a
 This plot's json file was manually made with vega cod and without the use of Altair. The layered text and overall smoother interactivness is currently not supported on Altair.
 
 <div class="left">
-{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/assets/json/bcubcgHW1Plot1.json" text="Altair Json" %}
+{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/assets/json/bcubcgHW1Plot1inter.json" text="Altair Json" %}
 </div>
 
 <div class="left">
-{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/assets/json/bcubcgHW1Plot1.json" text="Jupyter Notebook" %}
+{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/python_notebooks/Stocco_Paull_HW10.ipynb" text="Jupyter Notebook" %}
 </div>
 
 <div class="left">
-{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/python_notebooks/Stocco_Paull_HW10.ipynb" text="Vega-Lite Json" %}
+{% include elements/button.html link="https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/assets/json/bcubcgHW1Plot1vegalite.json" text="Vega-Lite Json" %}
 </div>
 .
 
