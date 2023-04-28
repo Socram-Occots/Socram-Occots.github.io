@@ -12,6 +12,10 @@ custom_js:
 
 # The GPA Timeline of UIUC Classes (2010-2022)
 
+Group 13
+
+Stocco and Paull
+
 ## Average GPA of Each Course by College in UIUC by Year and Term
 
 <vegachart schema-url="{{ site.baseurl }}\assets\json\UIUCgpaTimeLine.json" style="width: 100%"></vegachart>
