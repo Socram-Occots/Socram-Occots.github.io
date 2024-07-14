@@ -15,7 +15,7 @@ description: For CS 416
    <svg width="1000" height="1000"></svg>
    <script>
     async function init() {
-        var data = await d3.csv("https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/python_notebooks/CS416/WDICSV.csv");
+        var data = await d3.csv("https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/python_notebooks/CS416/worlddata_massaged.csv");
         var specific_data = data.filter(function(d) {if ((d["Country"] == "Africa Eastern and Southern") && (d["Indicator Name"] == "Agricultural land (sq. km)")) {
             return d;
         }})
