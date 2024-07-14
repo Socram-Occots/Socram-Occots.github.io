@@ -52,7 +52,7 @@
   <main class="flex-shrink-0 container mt-5">
     <nav class="navbar navbar-expand-lg navbar-themed">
 
-  <a class="navbar-brand" href="/"><h5><b>Jill Naiman</b></h5></a>
+  <a class="navbar-brand" href="/"><h5><b>Marcos Stocco</b></h5></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-1x fa-bars text-themed"></i>
@@ -75,6 +75,61 @@
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
   <h1 id="test">test</h1>
 
+<html>
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+   <style> circle { fill: lightblue; stroke: black; } </style>
+   <body onload="init()">
+   
+   <svg width="1000" height="1000"></svg>
+   <script>
+    async function init() {
+        var data = await d3.csv("https://github.com/Socram-Occots/Socram-Occots.github.io/blob/main/python_notebooks/CS416/WDICSV.csv");
+        var specific_data = data.filter(function(d) {if ((d["Country"] == "Africa Eastern and Southern") && (d["Indicator Name"] == "Aquaculture production (metric tons)")) {
+            return d;
+        }})
+        var xmax = d3.max(specific_data["variable"])
+        var ymax = d3.max(specific_data["value"])
+        var margin = 50,
+            width = 500,
+            height = 500;
+        var x = d3.scaleLinear()
+            .domain([1950, 2022])
+            .range([0, width]);
+        var y = d3.scaleLinear()
+            .domain([0, ymax])
+            .range([height, 0]);
+        var svg = d3.select("svg")
+            .attr("width", width + 2 * margin)
+            .attr("height", height + 2 * margin)
+            .append("g")
+            .attr("transform", "translate(" + margin + "," + margin + ")");
+        svg.append("g")
+            .datum(specific_data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) {
+                    return x(d.variable)
+                })
+                .y(function(d) {
+                    return y(d.value)
+                })
+            )
+        var xAxis = d3.axisBottom(x)
+            .tickFormat(d3.format("~s"));
+        var yAxis = d3.axisLeft(y)
+            .tickFormat(d3.format("~s"));
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+        svg.append("g")
+            .call(yAxis);
+    }
+   </script>
+   </body>
+</html>
+
 </div>
   </main>
   <footer class="mt-auto py-3 text-center">
@@ -84,12 +139,12 @@
     by <strong>A. P. Corgi</strong>
   </small>
 
-  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:username@domain.com"
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:socramoccots@gmail.com"
        style="color: #6c757d"
        onMouseOver="this.style.color='#db4437'"
        onMouseOut="this.style.color='#6c757d'">
       <i class="fas fa-envelope fa-1x"></i>
-    </a><a class="social mx-1"  href="https://www.github.com/jnaiman"
+    </a><a class="social mx-1"  href="https://www.github.com/Socram-Occots"
        style="color: #6c757d"
        onMouseOver="this.style.color='#333333'"
        onMouseOut="this.style.color='#6c757d'">
