@@ -5,8 +5,6 @@ image: assets/pngs/cars.png
 description: For CS 416
 ---
 
-<h1 id="title">test</h1>
-
 <script>
     const annotation_details = {
         1:["2007: The % of the urban and rural world population equalized (1)","Urban population (% of total population)",2007],
@@ -42,7 +40,6 @@ description: For CS 416
     var final_scene = ["World"];
     var urbanvsrural_field = ["Urban population (% of total population)", "Rural population (% of total population)"];
     var standard_field = ["Urban population (% of total population)"];
-    var dropdown_input = [];
     const input_dictionary={ 
         0:urban_vs_rural, 
         1:countries1, 
@@ -67,9 +64,13 @@ description: For CS 416
         drawing = true;
         if (current_stage == 5) current_stage = 0;
         else current_stage = (current_stage + 1)%5;
-        console.log(current_stage);
-        if (current_stage == 4) document.getElementById("selectNames").style.display = "inline";
-        else document.getElementById("selectNames").style.display = "none";
+        // console.log(current_stage);
+        if (current_stage == 4) 
+        {   document.getElementById("selectNames").style.display = "inline";
+            document.getElementById("submit").style.display = "inline";}
+        else 
+        {   document.getElementById("selectNames").style.display = "none";
+            document.getElementById("submit").style.display = "none";}
         promtDrawCycle()
     };
     function stageBack() {
@@ -77,9 +78,13 @@ description: For CS 416
         drawing = true;
         if (current_stage - 1 < 0) current_stage = 0;
         else current_stage = (current_stage - 1)%5 ;
-        console.log(current_stage);
-        if (current_stage == 4) document.getElementById("selectNames").style.display = "inline";
-        else document.getElementById("selectNames").style.display = "none";
+        // console.log(current_stage);
+        if (current_stage == 4) 
+        {   document.getElementById("selectNames").style.display = "inline";
+            document.getElementById("submit").style.display = "inline";}
+        else 
+        {   document.getElementById("selectNames").style.display = "none";
+            document.getElementById("submit").style.display = "none";}
         promtDrawCycle()
     };
     function explore() {
@@ -191,15 +196,33 @@ description: For CS 416
             margin-left: auto;
             margin-right: auto;
         }
-        #selectNames {
-            display: none;
+        #title{
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
+        #intro{
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #help {
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            }
+        #selectNames {display: none;}
+        #submit {display: none;}
     </style>
+        <h1 id="title">The Development of Urbanization in the World</h1>
+        <h2 id="intro">A Narrative Visualization</h2>
+        <p id="help"> Progress through with the back and next buttons. The annotations can be moved out of the way if wanted.<p>
     <div class="container">
         <button onclick='stageBack()'> <- Back </button> 
         <button onclick='stageNext()'> Next -> </button> 
-        <select id="selectNames" size="5" multiple> <option disabled selected value> -- select an option(s) -- </option> </select>
-        <button onclick='explore()'> Submit </button>
+        <select id="selectNames" size="5" multiple> <option disabled selected value> -- select an option(s) (select multiple: ctr/shift) -- </option> 
+        </select>
+        <button id="submit" onclick='explore()'> Submit </button>
     </div>
     <div class="container">
         <svg id="dataviz"></svg>
@@ -242,7 +265,7 @@ description: For CS 416
         var specific_data = d3_csv_data.filter(function(d) {if ((input_dictionary[current_stage].includes(d["Country Name"])) && field_dictionary[current_stage].includes(d["Indicator Name"])) {
             return d;
         }});
-        console.log(specific_data);
+        // console.log(specific_data);
         var years_yvalue = specific_data.map(function(d){
             return {
                 name: which_input(d),
@@ -261,8 +284,8 @@ description: For CS 416
         var grouped = d3.nest()
             .key(function(d) { return d.name; })
             .entries(years_yvalue);
-        console.log(years_yvalue);
-        console.log(grouped);
+        // console.log(years_yvalue);
+        // console.log(grouped);
         // console.log(years);
         var xmax = d3.max(years);
         // console.log(yvaluesarray);
@@ -289,7 +312,7 @@ description: For CS 416
                 acc[currElement.key] = index;
                 return acc;
             }, {});
-            console.log(res);
+            // console.log(res);
             var object_keys = Object.keys(res);
             var object_keys_length = Object.keys(res).length;
             var color = d3.scaleSequential(d3.interpolateSpectral)
